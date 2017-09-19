@@ -1,0 +1,47 @@
+package com.quidco.locators;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class WebsiteLocators {
+	
+	public WebDriver driver;
+	
+	
+	//Home page locators.
+	@FindBy(css=".btn.secondary")
+	WebElement joinNowButtonLoc;
+	
+	//Join Now page locators
+	@FindBy(id="first_name_join")
+	WebElement firstNameLoc;
+		
+	@FindBy(id="last_name_join")
+	WebElement lastNameLoc;
+		
+	@FindBy(id="new_email_join")
+	WebElement emailLoc;
+		
+	@FindBy(id="new_password_join")
+	WebElement passwordLoc;
+		
+	@FindBy(css=".form-group.form-item.control-group.terms-and-conditions .checkbox")
+	WebElement termsAndConditionCheckbocLoc;
+		
+	@FindBy(css=" .textbox-alert.help-block.error .type")
+	WebElement termsAndConditionsWarningMessageLoc;
+		
+	@FindBy(id="agree_to_offers_label")
+	WebElement offersLabelCheckBocLoc;
+		
+	@FindBy(id="join-quidco-submit-button")
+	WebElement joinQuidcoButtonLoc;
+		
+	@FindBy(css=".super.ng-binding")
+	WebElement welcomeMessageLoc;
+		
+		
+		
+
+}

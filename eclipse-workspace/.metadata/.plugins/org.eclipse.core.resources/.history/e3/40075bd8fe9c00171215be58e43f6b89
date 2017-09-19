@@ -1,0 +1,60 @@
+/**
+ * 
+ */
+package com.quidco.tests;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import com.quidco.pages.HomePage;
+import com.quidco.pages.JoinNowPage;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowTests extends BaseTest {
+	
+	@Test
+	public void joinNowValidTest(){
+		
+		home=PageFactory.initElements(driver, HomePage.class);
+		home.launchWebSite();
+		home.joinNow();
+		joinnow=PageFactory.initElements(driver, JoinNowPage.class);
+		joinnow.joinQuidco("sharath", "Reddy", "sharathtest@test.com", "123456789");
+	}
+	
+	@Test
+	public void joinNowInvalidTest() {
+		
+		home=PageFactory.initElements(driver, HomePage.class);
+		home.launchWebSite();
+		home.joinNow();
+		joinnow=PageFactory.initElements(driver, JoinNowPage.class);
+		for (int intcase=0; intcase<=3; intcase++) {
+			if (intcase==0) {
+				
+				joinnow.joinQuidco("", "", "", "");
+			}
+			
+			if(intcase==1)
+			{
+				joinnow.joinQuidco("sharath", "Reddy", "sharathtest@test.com", "123456789");
+			}
+			
+			if(intcase==2) {
+				
+				joinnow.joinQuidco("sharath", "Reddy", "sharathtest@test.com", "1234");
+			}
+			else if(intcase==3) {
+				
+				joinnow.joinQuidco("sharath", "Reddy", "sharathtest@test.com", "123456789");
+			}
+		}
+		
+	}
+	
+	
+
+}

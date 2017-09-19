@@ -1,0 +1,41 @@
+/**
+ * 
+ */
+package com.quidco.tests;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import com.quidco.pages.HomePage;
+import com.quidco.pages.JoinNowPage;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowTests extends BaseTest {
+	
+	//This test will validate if the user able to join with valid details.
+	//@Test
+	public void joinNowValidTest(){
+		
+		home=PageFactory.initElements(driver, HomePage.class);
+		home.launchWebSite();
+		home.joinNow();
+		joinnow=PageFactory.initElements(driver, JoinNowPage.class);
+		joinnow.joinQuidco("sharath", "Reddy", JoinNowPage.randomEmail(), "123456789");
+	}
+	
+	//This test will validate if the user able to join with invalid details.
+	@Test
+	public void joinNowInvaliddetailsTest() {
+		
+		home=PageFactory.initElements(driver, HomePage.class);
+		home.launchWebSite();
+		home.joinNow();
+		joinnow=PageFactory.initElements(driver, JoinNowPage.class);
+		joinnow.joinQuidco("", "", "", "");
+				
+	}
+			
+}

@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package com.quidco.pages;
+
+import org.openqa.selenium.WebDriver;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowPage {
+
+	public WebDriver driver;
+	
+	public JoinNowPage(WebDriver driver){
+		
+		this.driver=driver;
+	}
+	
+	
+}

@@ -1,0 +1,57 @@
+/**
+ * 
+ */
+package com.quidco.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowPage {
+
+	public WebDriver driver;
+	
+	public JoinNowPage(WebDriver driver){
+		
+		this.driver=driver;
+	}
+	
+	
+	/**
+	 * This method will submit for JoinNow 
+	 */
+	public void joinQuidco(String strFirstName, String strLastName, String strEmail, String strPassword) {
+		
+		waitFor(firstNameLoc).sendKeys(strFirstName);
+		waitFor(lastNameLoc).sendKeys(strLastName);
+		waitFor(emailLoc).sendKeys(strEmail);
+		waitFor(passwordLoc).sendKeys(strPassword);
+		waitFor(termsAndConditionCheckbocLoc).submit();
+		waitFor(termsAndConditionCheckbocLoc).click();
+		waitFor(offersLabelCheckBocLoc).click();
+		waitFor(joinQuidcoButtonLoc).click();
+		
+		String strMessage = waitFor(welcomeMessageLoc).getText();
+		if (strMessage.contains("Welcome to Quidco")) {
+			
+			System.out.println(strMessage);
+		}
+		else {
+			
+			System.out.println("registration not successful");
+		}
+		
+	}
+	
+	public WebElement waitFor(WebElement element) {
+		
+		return new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(element));
+	}
+	
+}

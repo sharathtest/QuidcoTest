@@ -1,0 +1,84 @@
+/**
+ * 
+ */
+package com.quidco.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowPage {
+
+	public WebDriver driver;
+	
+	public JoinNowPage(WebDriver driver){
+		
+		this.driver=driver;
+	}
+	
+	//Join Now page locators
+	
+	@FindBy(id="first_name_join")
+	WebElement firstNameLoc;
+	
+	@FindBy(id="last_name_join")
+	WebElement lastNameLoc;
+	
+	@FindBy(id="new_email_join")
+	WebElement emailLoc;
+	
+	@FindBy(id="new_password_join")
+	WebElement passwordLoc;
+	
+	@FindBy(id="agree_to_terms_label")
+	//@FindBy(css="#agree_to_terms_label .left-block")
+	WebElement termsAndConditionCheckbocLoc;
+	
+	@FindBy(id="agree_to_offers_label")
+	WebElement offersLabelCheckBocLoc;
+	
+	@FindBy(id="join-quidco-submit-button")
+	WebElement joinQuidcoButtonLoc;
+	
+	@FindBy(css=".super.ng-binding")
+	WebElement welcomeMessageLoc;
+	
+	
+	
+	/**
+	 * This method will submit for JoinNow 
+	 */
+	public void joinQuidco(String strFirstName, String strLastName, String strEmail, String strPassword) {
+		
+		waitFor(firstNameLoc).sendKeys(strFirstName);
+		waitFor(lastNameLoc).sendKeys(strLastName);
+		waitFor(emailLoc).sendKeys(strEmail);
+		waitFor(passwordLoc).sendKeys(strPassword);
+		waitFor(termsAndConditionCheckbocLoc).click();
+		waitFor(offersLabelCheckBocLoc).click();
+		waitFor(joinQuidcoButtonLoc).click();
+		
+		String strMessage = waitFor(welcomeMessageLoc).getText();
+		if (strMessage.contains("Welcome to Quidco")) {
+			
+			System.out.println("invalid login");
+		}
+		else {
+			
+			System.out.println("registration not successful");
+		}
+		
+	}
+	
+	public WebElement waitFor(WebElement element) {
+		
+		return new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(element));
+	}
+	
+}

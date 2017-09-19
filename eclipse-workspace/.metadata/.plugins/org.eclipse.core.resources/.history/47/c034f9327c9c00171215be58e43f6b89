@@ -1,0 +1,63 @@
+/**
+ * 
+ */
+package com.quidco.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowPage {
+
+	public WebDriver driver;
+	
+	public JoinNowPage(WebDriver driver){
+		
+		this.driver=driver;
+	}
+	
+	//Join Now page locators
+	
+	@FindBy(id="first_name_join")
+	WebElement firstNameLoc;
+	
+	@FindBy(id="last_name_join")
+	WebElement lastNameLoc;
+	
+	@FindBy(id="new_email_join")
+	WebElement emailLoc;
+	
+	@FindBy(id="new_password_join")
+	WebElement passwordLoc;
+	
+	@FindBy(id="agree_to_terms_label")
+	WebElement termsAndConditionCheckbocLoc;
+	
+	@FindBy(id="agree_to_offers_label")
+	WebElement offersLabelCheckBocLoc;
+	
+	@FindBy(id="join-quidco-submit-button")
+	WebElement joinQuidcoButtonLoc;
+	
+	
+	
+	/**
+	 * This method will submit for JoinNow 
+	 */
+	public void JoinQuidco() {
+		
+		
+	}
+	
+	public WebElement waitFor(WebElement element) {
+		
+		return new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(element));
+	}
+	
+}

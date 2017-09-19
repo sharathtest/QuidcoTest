@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package com.quidco.tests;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import com.quidco.pages.HomePage;
+import com.quidco.pages.JoinNowPage;
+
+/**
+ * @author sharath
+ *
+ */
+public class JoinNowTest extends BaseTest {
+	
+	@Test
+	public void joinNowValidTest(){
+		
+		home=PageFactory.initElements(driver, HomePage.class);
+		home.launchWebSite();
+		home.joinNow();
+		joinnow=PageFactory.initElements(driver, JoinNowPage.class);
+		joinnow.joinQuidco("sharath", "Reddy", "sharathtest12345@test.com", "123456789");
+	}
+	
+	
+
+}
